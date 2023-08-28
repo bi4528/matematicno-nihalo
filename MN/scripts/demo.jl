@@ -1,6 +1,7 @@
 using MN
 
 using Plots
+#namenjeno za izris v terminalu
 using SixelTerm
 
 g = 9.80665  # Težni pospešek
@@ -21,8 +22,19 @@ function primerjaj_z_harmonicnim_nihalom(l, t, theta0, dtheta0, n)
     
     xlabel!("Čas (s)")
     ylabel!("Odmik (rad)")
-    title!("Primerjava matematičnega nihala z harmoničnim nihanjem")
+    title!("Primerjava matematičnega z harmoničnim nihanjem")
+    
+    #namenjeno za izris v direktorij ./graphs
+    #savefig("./graphs/primerjava-dt01.png")
 end
+
+# Primerjajmo nihanje matematičnega nihala z nihanjem harmoničnega nihala
+# dolžina nihala: 1 m
+# čas nihanja: 10 s
+# začetni kot: 0.1 rad
+# začetna hitrost: 0.1 rad/s
+# število korakov: 1000
+primerjaj_z_harmonicnim_nihalom(1, 10.0, 0.1, 0.1, 1000)
 
 # Primerjajmo nihanje matematičnega nihala z nihanjem harmoničnega nihala
 # dolžina nihala: 1 m
@@ -30,7 +42,7 @@ end
 # začetni kot: 0.1 rad
 # začetna hitrost: 0.05 rad/s
 # število korakov: 1000
-primerjaj_z_harmonicnim_nihalom(1, 10.0, 0.1, 0.0, 1000)
+primerjaj_z_harmonicnim_nihalom(1, 10.0, 0.1, 0.05, 1000)
 
 # Primerjajmo nihanje matematičnega nihala z nihanjem harmoničnega nihala
 # pričakujemo manjšo napako, saj je začetna hitrost pri harmoničnem nihalu 0.0 rad/s
