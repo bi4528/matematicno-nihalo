@@ -13,7 +13,7 @@ ki opisuje matematično nihalo z metodo Runge-Kutta 4. reda.
 - dtheta0 je začetna hitrost
 - n je število korakov
 """
-function nihalo(l, t, theta0, dtheta0, n)
+function matematicno_nihalo(l, t, theta0, dtheta0, n)
     h = t / n    # Dolžina enega koraka
     
     # Definiramo funkcijo sistema prvega reda
@@ -21,10 +21,14 @@ function nihalo(l, t, theta0, dtheta0, n)
         return [ω, -g/l * sin(θ)]
     end
     
+    # Začetni pogoji
     θ = theta0
     ω = dtheta0
+
+    # Pripravimo tabelo za shranjevanje rezultatov
     θ_vals = [θ]
     
+    # Izračunamo vrednosti za vsak korak z Runge-Kutta 4. reda
     for i in 1:n
         k1 = h * f(θ, ω)
         k2 = h * f(θ + k1[1] / 2, ω + k1[2] / 2)
@@ -38,6 +42,20 @@ function nihalo(l, t, theta0, dtheta0, n)
     end
     
     return θ_vals
+end
+
+"""
+Funkcija, ki vrne vrednosti za harmonično nihanje.
+- l je dolžina nihala
+- t je čas nihanja
+- theta0 je začetni kot
+- n je število korakov
+"""
+function harmonicno_nihalo(l, t, theta0, n)
+    times = LinRange(0.0, t, n+1)
+
+    # Nihanje harmoničnega nihala
+    return theta0 * cos.(sqrt(g/l) .* times)
 end
 
 end # module MN
