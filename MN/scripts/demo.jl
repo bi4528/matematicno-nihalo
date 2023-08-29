@@ -53,5 +53,14 @@ primerjaj_z_harmonicnim_nihalom(1, 10.0, 0.1, 0.05, 1000)
 # število korakov: 1000
 primerjaj_z_harmonicnim_nihalom(1, 10.0, 0.1, 0.0, 1000)
 
+# Primerjajmo nihanje matematičnega nihala z nihanjem harmoničnega nihala
+# pričakujemo manjšo napako, saj je začetna hitrost pri harmoničnem nihalu 0.0 rad/s
+# dolžina nihala: 1 m
+# čas nihanja: 10 s
+# začetni kot: 0.1 rad
+# začetna hitrost: 0.0 rad/s
+# število korakov: 1000
+primerjaj_z_harmonicnim_nihalom(1, 10.0, 0.1, 0.2, 1000)
+
 
 
