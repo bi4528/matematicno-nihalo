@@ -57,10 +57,10 @@ m \cdot (g \cdot l \cdot (1 - \cos(\theta_0)) + 0.5 \cdot l^2 \cdot \dot{\theta}
 Funkcija `vrni_nihajni_cas_in_energijo(m, l, n, theta_max, dtheta0)` izračuna nihalni čas ter energijo nihala v odvisnosti od začetnih pogojev. Parametri vključujejo maso nihala $m$, dolžino nihala $l$, število korakov $n$, maksimalni kot $\theta_{\text{max}}$ in začetno hitrost $\theta'(0) = \text{dtheta0}$. Vrne pare točk `(energija_vals, t_vals)` potrebne za izris grafa.
 
 ## Primerjava matematičenga in harmoničnega nihala
-Primer uporabe funkcij je v funkciji `primerjaj_z_harmonicnim_nihalom(l, t, theta0, dtheta0, n)`, ki primerja numerično rešitev matematičnega nihala z analitično rešitvijo harmoničnega nihala in izrisuje graf. Pri harmoničnem nihalu nihajni čas ni odvisen od začetnih pogojev (energije), kar pomeni da je `dtheta0 = 0`. Zato funkcija sprejme enake parametre kot funkciji za numerično in harmonično nihanje.
+Primer uporabe funkcij je v funkciji `primerjaj_z_harmonicnim_nihalom(l, t, theta0, dtheta0, n)`, ki primerja numerično rešitev matematičnega nihala z analitično rešitvijo harmoničnega nihala in izrisuje graf. Pri harmoničnem nihalu nihajni čas ni odvisen od začetnih pogojev (energije), kar pomeni da je `dtheta0 = 0`. Zato funkcija sprejme enake parametre kot funkciji za numerično in harmonično nihanje. Implementacija se nahaja v datoteki `demo.jl`.
 
 ## Izris grafa nihajnega časa in energije
-Funkcija `izrisi_graf(m, l, n, theta_max=π/2)` izriše graf, ki prikazuje odvisnost nihalnega časa od energije nihala. V grafu primerjamo scenarije z različnimi začetnimi hitrostmi. Uporabljeni parametri vključujejo maso nihala $m$, dolžino nihala $l$, število korakov $n$ ter maksimalni kot $\theta_{\text{max}}$.
+Funkcija `izrisi_graf(m, l, n, theta_max=π/2)` izriše graf, ki prikazuje odvisnost nihalnega časa od energije nihala. V grafu primerjamo scenarije z različnimi začetnimi hitrostmi. Uporabljeni parametri vključujejo maso nihala $m$, dolžino nihala $l$, število korakov $n$ ter maksimalni kot $\theta_{\text{max}}$. Implementacija se nahaja v datoteki `nihajni_cas.jl`.
 
 ## Rezultati
 Primerjali smo nihanje matematičnega in harmoničnega nihala tako, da smo napisali test in preverili, ali je razlika med tema dvema znotraj tolerance. Primerjavo smo predstavili tudi grafično, pri čemer opazujemo, da obe krivulji pri pogoju `dtheta0 = 0.0` zavzemata približno enak položaj. V primeru parametra `dtheta0 > 0.0` pa opazimo večje odstopanje.
