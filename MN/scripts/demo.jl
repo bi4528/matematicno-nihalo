@@ -17,15 +17,15 @@ function primerjaj_z_harmonicnim_nihalom(l, t, theta0, dtheta0, n)
     θ_harmonic = MN.harmonicno_nihalo(l, t, theta0, n)
 
     # Izrišemo rezultate
-    plot(times, θ_vals, label="Matematično nihalo")
-    plot!(times, θ_harmonic, label="Harmonično nihanje")
+    plot(times, θ_vals, label="Matematično nihalo dtheta0 = $dtheta0 rad/s")
+    plot!(times, θ_harmonic, label="Harmonično nihalo dtheta0 = $dtheta0 rad/s")
     
     xlabel!("Čas (s)")
     ylabel!("Odmik (rad)")
     title!("Primerjava matematičnega z harmoničnim nihanjem")
     
     #namenjeno za izris v direktorij ./graphs
-    #savefig("./graphs/primerjava-dt01.png")
+    #savefig("./graphs/primerjava-dt0.png")
 end
 
 # Primerjajmo nihanje matematičnega nihala z nihanjem harmoničnega nihala

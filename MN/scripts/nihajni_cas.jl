@@ -29,7 +29,7 @@ function izrisi_graf(m, l, n, theta_max=π/2)
     title!("Spreminjanje nihajnega časa z energijo nihala")
     
     #namenjeno za izris v direktorij ./graphs
-    #savefig("./graphs/primerjava-dt01.png")
+    #savefig("./graphs/nihajni-cas-energija.png")
 end
 
 # Izrišemo graf nihajnega časa v odvisnosti od energije nihala
