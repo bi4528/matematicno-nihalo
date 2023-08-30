@@ -6,14 +6,16 @@ Ta dokument opisuje numerično reševanje diferencialne enačbe drugega reda, ki
 ## Diferencialna enačba in prevedba na sistem prvega reda
 Diferencialna enačba, ki opisuje kotni odmik $\theta(t)$ pri nedušenem nihanju nitnega nihala, je podana kot:
 ```math
-frac{g}{l}\sin(\theta(t)) + \theta(t) = 0
+\frac{g}{l}\sin(\theta(t)) + \theta(t) = 0
 ```
 kjer sta $g$ težni pospešek in $l$ dolžina nihala.
 
 Da bi to diferencialno enačbo rešili numerično, jo najprej prevedemo na sistem dveh diferencialnih enačb prvega reda:
 ```math
 \theta'(t) = \omega(t)
-omega'(t) = -\frac{g}{l}\sin(\theta(t))
+```
+```math
+\omega'(t) = -\frac{g}{l}\sin(\theta(t))
 ```
 kjer je $\theta'(t)$ kotna hitrost nihala in $\omega'(t)$ pospešek kotne hitrosti.
 
@@ -62,5 +64,9 @@ Funkcija `izrisi_graf(m, l, n, theta_max=π/2)` izriše graf, ki prikazuje odvis
 
 ## Rezultati
 Primerjali smo nihanje matematičnega in harmoničnega nihala tako, da smo napisali test in preverili, ali je razlika med tema dvema znotraj tolerance. Primerjavo smo predstavili tudi grafično, pri čemer opazujemo, da obe krivulji pri pogoju `dtheta0 = 0.0` zavzemata približno enak položaj. V primeru parametra `dtheta0 > 0.0` pa opazimo večje odstopanje.
+![](https://github.com/bi4528/matematicno-nihalo/blob/master/MN/graphs/primerjava-dt0.png)
+![](https://github.com/bi4528/matematicno-nihalo/blob/master/MN/graphs/primerjava-dt005.png)
+![](https://github.com/bi4528/matematicno-nihalo/blob/master/MN/graphs/primerjava-dt01.png)
 
 Nato smo izrisali graf, s katerim smo želeli prikazati odvisnost nihajnega časa od energije, s čimer smo hoteli pokazati, kako nihajni čas variira glede na začetne pogoje. Višja energija pomeni večjo amplitudo nihala in manjše število nihajev v istem časovnem intervalu. To se izkaže v daljšem nihajnem času, kot je razvidno iz grafa. S spreminjanjem parametra `dtheta0` smo tudi pokazali, kako se matematično nihalo ob spremenjenih začetnih pogojih giblje drugače. Na primer, ob začetni hitrosti `0.1 rad/s` krivulja manj strmoglavo narašča kot pri začetni hitrosti `0.4 rad/s`.
+![](https://github.com/bi4528/matematicno-nihalo/blob/master/MN/graphs/nihajni-cas-energija.png)
