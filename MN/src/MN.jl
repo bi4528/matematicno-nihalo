@@ -1,6 +1,7 @@
 module MN
 
 using Plots
+using Elliptic
 
 g = 9.80665  # Težni pospešek
 
@@ -56,6 +57,63 @@ function harmonicno_nihalo(l, t, theta0, n)
 
     # Nihanje harmoničnega nihala
     return theta0 * cos.(sqrt(g/l) .* times)
+end
+
+"""
+Funkcija, ki vrne maksimalni kot theta, ki ga nihalo doseže
+pri začetni hitrosti dtheta0 in začetnem kotu theta0.
+- l je dolžina nihala
+- theta0 je začetni kot
+- dtheta0 je začetna hitrost
+"""
+function vrni_maksimalno_theta(l, theta0, dtheta0)
+    
+    return acos(cos(theta0)-(l/2*g)*dtheta0^2)
+end
+
+"""
+Funkcija, ki vrne nihalni čas nihala pri začetni hitrosti dtheta0 in začetnem kotu theta0.
+- l je dolžina nihala
+- theta0 je začetni kot
+- dtheta0 je začetna hitrost
+"""
+function izracunaj_nihalni_cas(l, theta0, dtheta0)
+    
+    theta_max = vrni_maksimalno_theta(l, theta0, dtheta0)
+    
+    return 4*sqrt(l/g)*Elliptic.F(π/2, sin(theta_max/2)^2)
+end
+
+"""
+Funkcija, ki vrne energijo nihala pri začetni hitrosti dtheta0 in začetnem kotu theta0.
+- l je dolžina nihala
+- theta0 je začetni kot
+- dtheta0 je začetna hitrost
+"""
+function energija(m, l, theta0, dtheta0)
+    
+    return m*(g*l*(1-cos(theta0))+0.5*l^2*dtheta0^2)
+end
+
+"""
+Funkcija, ki vrne energijo nihala in nihajni čas pri začetni hitrosti dtheta0 in začetnem kotu theta0.
+- l je dolžina nihala
+- theta0 je začetni kot
+- dtheta0 je začetna hitrost
+- theta_max je maksimalni kot, do katerega želimo izračunati nihajni čas in energijo
+- n je število korakov
+"""
+function vrni_nihajni_cas_in_energijo(m, l, n, theta_max, dtheta0)
+    
+    theta = LinRange(0.0, theta_max, n+1)
+    t_vals = []
+    energija_vals = []
+    for i in 1:n
+        push!(t_vals, izracunaj_nihalni_cas(l, theta[i], dtheta0))
+        push!(energija_vals, energija(m, l, theta[i], dtheta0))
+    end
+    
+    return energija_vals, t_vals
 end
 
 end # module MN
