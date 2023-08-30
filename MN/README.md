@@ -6,7 +6,13 @@ Ta dokument opisuje numerično reševanje diferencialne enačbe drugega reda, ki
 ## Diferencialna enačba in prevedba na sistem prvega reda
 Diferencialna enačba, ki opisuje kotni odmik $\theta(t)$ pri nedušenem nihanju nitnega nihala, je podana kot:
 ```math
-\frac{g}{l}\sin(\theta(t)) + \theta(t) = 0
+\frac{g}{l}\sin(\theta(t)) + \theta''(t) = 0
+```
+```math
+\theta(0) = \theta_{0}
+```
+```math
+\theta'(0) = \theta'_{0}
 ```
 kjer sta $g$ težni pospešek in $l$ dolžina nihala.
 
